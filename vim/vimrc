@@ -128,23 +128,21 @@ let mapleader = ","
 nmap <silent> <Leader>w :w!<cr> 
 nmap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
 
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O<space><space><space><space>
-inoremap $q ''<esc>i  
-inoremap $e ""<esc>i
-inoremap $t <><esc>i
+"inoremap $1 ()<esc>i
+inoremap ( ()<esc>i
+inoremap [ 2[]<esc>i
+inoremap ${ {}<esc>i
+inoremap { {<esc>o}<esc>O<esc>4i<space><esc>i
+inoremap ' ''<esc>i  
+inoremap " ""<esc>i
+inoremap < <><esc>i
 
-vnoremap $1 <esc>`>a)<esc>`<i(<esc> 
-vnoremap $2 <esc>`>a]<esc>`<i[<esc> 
-vnoremap $3 <esc>`>a}<esc>`<i{<esc> 
-vnoremap $$ <esc>`>a"<esc>`<i"<esc> 
-vnoremap $q <esc>`>a'<esc>`<i'<esc> 
-vnoremap $e <esc>`>a"<esc>`<i"<esc> 
-
-
-
+vnoremap ( <esc>`>a)<esc>`<i(<esc> 
+vnoremap [ <esc>`>a]<esc>`<i[<esc> 
+vnoremap { <esc>`>a}<esc>`<i{<esc> 
+vnoremap " <esc>`>a"<esc>`<i"<esc> 
+vnoremap ' <esc>`>a'<esc>`<i'<esc> 
+vnoremap < <esc>`>a"<esc>`<i"<esc> 
 
 "用特殊的符号来代表tab制表符
 "set list
