@@ -133,7 +133,7 @@ inoremap ( ()<esc>i
 inoremap [ 2[]<esc>i
 inoremap ${ {}<esc>i
 inoremap { {<esc>o}<esc>O<esc>4i<space><esc>i
-inoremap ' ''<esc>i  
+"inoremap ' ''<esc>i  
 inoremap " ""<esc>i
 inoremap < <><esc>i
 
