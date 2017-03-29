@@ -84,12 +84,6 @@ set fileencodings=utf-8,gb2312,gbk,gb18030
 set fileformat=unix
 set langmenu=zh_CN.UTF-8
 
-"let g:rehash256 = 1
-set nu "显示行号
-set hlsearch "查询高亮
-set incsearch "逐字高亮
-set ignorecase "忽略大小写
-set gcr=a:block-blinkon0 "关闭光标闪烁
 
 "行列高亮显示 cterm 表示为原生vim设置样式，设置为NONE表示可以自定义设置。
 "ctermbg 设置终端vim的背景色, ctermfg 设置终端vim的前景色, guibg 和 guifg 分别是设置gvim的背景色和前景色
@@ -100,10 +94,10 @@ set cursorcolumn
 
 
 "粘贴时，忽略自动缩进的影响,在插入粘贴模式下进行粘贴
-""<map> <F10> :set paste<CR>
+map <F10> :set paste<cr>
 ""<map> <F11> :set nopaste<CR>
-:set pastetoggle=<F10>  "激活/取消paste模式
-"nmap <leader> :set paste
+:"set pastetoggle=<F10>  "激活/取消paste模式
+""nmap <leader>pp :set paste
 
 
 "关闭缓存文件
@@ -126,23 +120,48 @@ let mapleader = ","
 
 "own basiz set
 nmap <silent> <Leader>w :w!<cr> 
+nmap <silent> <Leader>q :wq<cr> 
 nmap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "inoremap $1 ()<esc>i
 inoremap ( ()<esc>i
-inoremap [ 2[]<esc>i
+inoremap [ []<esc>i
 inoremap ${ {}<esc>i
 inoremap { {<esc>o}<esc>O<esc>4i<space><esc>i
 "inoremap ' ''<esc>i  
-inoremap " ""<esc>i
+inoremap $" ""<esc>i
 inoremap < <><esc>i
 
 vnoremap ( <esc>`>a)<esc>`<i(<esc> 
 vnoremap [ <esc>`>a]<esc>`<i[<esc> 
 vnoremap { <esc>`>a}<esc>`<i{<esc> 
-vnoremap " <esc>`>a"<esc>`<i"<esc> 
+vnoremap $" <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
-vnoremap < <esc>`>a"<esc>`<i"<esc> 
+vnoremap < <esc>`>a><esc>`<i<<esc> 
+
+"set 7 lines to the cursor - when moveing vertically use j/k
+",上下滚动，始终在中间
+set so=7
+
+"always show current position
+set ruler
+
+"a buffer becomes hidden when it is abondoned
+set hid
+
+"configure backspace so it acts as it should act
+"indent: 如果用了:set indent,:set ai 等自动缩进，想用退格键将字段缩进的删掉，必须设置这个选项。否则不响应。 
+"eol:如果插入模式下在行开头，想通过退格键合并两行，需要设置eol。 
+"start：要想删除此次插入前的输入，需设置这个
+set backspace=eol,start,indent
+set whichwrap+=<,>h,l
+
+"let g:rehash256 = 1
+set nu "显示行号
+set hlsearch "查询高亮
+set incsearch "逐字高亮
+set ignorecase "忽略大小写
+set gcr=a:block-blinkon0 "关闭光标闪烁
 
 "用特殊的符号来代表tab制表符
 "set list
