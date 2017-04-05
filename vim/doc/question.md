@@ -10,3 +10,4 @@ ncurses是一个比较老的库
 
 解决方法：sudo apt install libncurses5-dev
 ```
+
