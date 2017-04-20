@@ -126,10 +126,10 @@ nmap <silent> <Leader>q :wq<cr>
 nmap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "inoremap $1 ()<esc>i
-inoremap ( ()<esc>i
-inoremap [ []<esc>i
-inoremap { {}<esc>i
-inoremap ${ {<esc>o}<esc>O<esc>4i<space><esc>i
+inoremap $( ()<esc>i
+inoremap $[ []<esc>i
+inoremap ${ {}<esc>i
+"inoremap ${ {<esc>o}<esc>O<esc>4i<space><esc>i
 "inoremap ' ''<esc>i  
 inoremap $" ""<esc>i
 inoremap $< <><esc>i
@@ -140,6 +140,16 @@ vnoremap { <esc>`>a}<esc>`<i{<esc>
 vnoremap $" <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
 vnoremap < <esc>`>a><esc>`<i<<esc> 
+
+command! Json :execute '%!python -m json.tool'
+"windowns
+"command! JsonFormat :execute '%!python -m json.tool'  
+"  \ | :execute '%!python -c "import
+"  re,sys;chr=__builtins__.__dict__.get(\"unichr\",
+"  chr);sys.stdout.write(re.sub(r\"\\u[0-9a-f]{4}\", lambda x: chr(int(\"0x\"
+"  + x.group(0)[2:], 16)).encode(\"utf-8\"), sys.stdin.read()))"'  
+"  \ | :set ft=javascript  
+"  \ | :1
 
 
 "set 7 lines to the cursor - when moveing vertically use j/k
