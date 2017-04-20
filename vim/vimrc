@@ -91,12 +91,12 @@ set langmenu=zh_CN.UTF-8
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white   
 set cursorcolumn
 "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-
+:hi MatchParen ctermbg=black ctermfg=green
 
 "粘贴时，忽略自动缩进的影响,在插入粘贴模式下进行粘贴
-map <F10> :set paste<cr>
+"map <F10> :set paste<cr>
 ""<map> <F11> :set nopaste<CR>
-:"set pastetoggle=<F10>  "激活/取消paste模式
+:set pastetoggle=<F10>  "激活/取消paste模式
 ""nmap <leader>pp :set paste
 
 
@@ -106,6 +106,8 @@ set noswapfile
 
 set nocompatible "使用vim自己的键盘模式
 
+"set expandtab | :%ret! 4 每个tab用4个空格代替
+"
 "制表符和空格键设置
 set tabstop=4  "表示一个tab的空格长度，默认是8
 set softtabstop=4  "表示编辑模式下退格键的回退长度
@@ -126,11 +128,11 @@ nmap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
 "inoremap $1 ()<esc>i
 inoremap ( ()<esc>i
 inoremap [ []<esc>i
-inoremap ${ {}<esc>i
-inoremap { {<esc>o}<esc>O<esc>4i<space><esc>i
+inoremap { {}<esc>i
+inoremap ${ {<esc>o}<esc>O<esc>4i<space><esc>i
 "inoremap ' ''<esc>i  
 inoremap $" ""<esc>i
-inoremap < <><esc>i
+inoremap $< <><esc>i
 
 vnoremap ( <esc>`>a)<esc>`<i(<esc> 
 vnoremap [ <esc>`>a]<esc>`<i[<esc> 
@@ -138,6 +140,7 @@ vnoremap { <esc>`>a}<esc>`<i{<esc>
 vnoremap $" <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
 vnoremap < <esc>`>a><esc>`<i<<esc> 
+
 
 "set 7 lines to the cursor - when moveing vertically use j/k
 ",上下滚动，始终在中间
@@ -160,7 +163,9 @@ set whichwrap+=<,>h,l
 set nu "显示行号
 set hlsearch "查询高亮
 set incsearch "逐字高亮
-set ignorecase "忽略大小写
+"set ignorecase "忽略大小写
+"查询串中有大写，则为区分大小写，否则不区分，\c{char}不区分 {char}\C区分
+set smartcase "自动识别大小写，
 set gcr=a:block-blinkon0 "关闭光标闪烁
 
 "用特殊的符号来代表tab制表符
@@ -266,6 +271,16 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 "--------minibufexpl----------
+
+nmap <silent> <Leader>b1 :b1<cr>
+nmap <silent> <Leader>b2 :b2<cr>
+nmap <silent> <Leader>b3 :b3<cr>
+nmap <silent> <Leader>b4 :b4<cr>
+nmap <silent> <Leader>b5 :b5<cr>
+nmap <silent> <Leader>b6 :b6<cr>
+nmap <silent> <Leader>b7 :b7<cr>
+nmap <silent> <Leader>b8 :b8<cr>
+nmap <silent> <Leader>b8 :b9<cr>
 "这个设置保证在打开0个以上的文件是最高限制都是有用的，
 "如果不加就会出现打开一个文件的时候Filexplorer再次变小，当打开多个文件的时候再次变大
 let g:miniBufExplorerMoreThanOne=0
