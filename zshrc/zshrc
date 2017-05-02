@@ -114,3 +114,15 @@ unsetopt AUTO_CD
 wd() {
   . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
 }
+wd() {
+  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+}
+wd() {
+  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+}
+wd() {
+  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+}
+wd() {
+  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+}
