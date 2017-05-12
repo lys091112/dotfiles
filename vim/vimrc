@@ -178,6 +178,18 @@ set incsearch "逐字高亮
 set smartcase "自动识别大小写，
 set gcr=a:block-blinkon0 "关闭光标闪烁
 
+"查找选中文本，* 命令的原有功能被覆盖了, # 命令也被重新定义为反向
+"查找选中的文本了
+xnoremap * : <C-u> call <SID> VSetSearch() <CR>/<C-R>=@/<CR><CR>
+xnoremap # : <C-u> call < SID >VSetSearch() <CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+
 "用特殊的符号来代表tab制表符
 "set list
 "set listchars=tab:▸\ ,eol:¬

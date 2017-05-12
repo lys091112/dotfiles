@@ -35,8 +35,6 @@
     保存退出后，再打开/etc/vimrc并执行 :PluginInstall。
     然后cd到.vim/bundle/YouCompleteMe 执行：git submodule update –-init –-recursive
 
-
-
 ## 参数配置
 
     "golang
@@ -56,3 +54,20 @@
     -– 执行:GoDeps，显示当前包的依赖包列表。
     -– 执行:GoImplements，显示当前类型实现的interface列表。
     -– 执行:GoRename [to]，将当前光标下的符号替换为[to]
+
+### rst_table.vim  Allows to create and edit restructuredText tables easily
+```
+	Install the python extension to vim and then copy the file `rst_table.vim` 
+    to the `.vim/plugin` directory in your home directory. 
+
+	This plugin allows to create and edit restructuredText tables easily. 
+	Its adds two new commands: 
+       ,,c  ->  Creates a new restructuredText table. 
+	   ,,f  ->  Fix table columns in a table. 
+    example:
+    //中间要以2个空格分割会被当作一个column
+    column1  column2  column3
+    hello  world  call
+
+```
+
