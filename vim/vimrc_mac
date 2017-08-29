@@ -214,6 +214,7 @@ let g:tagbar_width=30                    "窗口宽度的设置
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "如果是c语言的程序的话，tagbar自动开启
 "
 "#--------------NERDTREE配置------------
+let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 noremap <F2> :NERDTreeToggle<CR>
 let NERDTreeDirArrows=1 "目录箭头 1 显示箭头  0传统+-|号
@@ -260,7 +261,8 @@ inoremap <silent> <Leader>dn <Plug>StopMarkdownPreview
 "nnoremap <Leader>ch :update<Bar>silent !google-chrome %:p<CR>
 
 " path to the chrome or the command to open chrome()
-let g:mkdp_path_to_chrome = "google-chrome"
+"let g:mkdp_path_to_chrome = "google-chrome"
+let g:mkdp_path_to_chrome="/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
 
 " set to 1, the vim will open the preview window once enter the markdowni file
 let g:mkdp_auto_start = 0

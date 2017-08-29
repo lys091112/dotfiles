@@ -2,7 +2,6 @@
 
 cd ../colors
 
-echo 'enter dir -->' 
 pwd
 
-sudo cp ./molokai.vim /usr/share/vim/vim80/colors
+sudo cp ./molokai.vim ~/.vim/colors/ 

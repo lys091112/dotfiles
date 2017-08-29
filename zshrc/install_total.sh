@@ -10,7 +10,7 @@ sudo apt-get install zsh
 
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-sh $basepath/install_zsh.sh
+sh $basepath/install_ohmyzsh.sh
 
 
 if [ -f "$zshFile" ]; then

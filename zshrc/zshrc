@@ -52,11 +52,11 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bower common-aliases docker encode64 git-extras gradle jira mvn npm pip pod python redis-cli sbt urltools wd)
+plugins=(git bower common-aliases docker encode64 git-extras gradle jira mvn npm pip pod python redis-cli sbt wd)
  
 #Define Java Home
-JAVA_HOME="/home/langle/xianyue/software/jdk1.8.0_45"
-export JAVA_HOME
+#JAVA_HOME="/home/langle/xianyue/software/jdk1.8.0_45"
+#export JAVA_HOME
       
 # Java Encoding
 alias javac='javac -J-Dfile.encoding=UTF-8 -encoding UTF-8 '
@@ -73,11 +73,12 @@ alias mci='mvn clean install'
 alias mct='mvn clean test'
 
 # Define Path
-export PATH=$JAVA_HOME/bin:/usr/local/sbin:$PATH
+#export PATH=$JAVA_HOME/bin:/usr/local/sbin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export PATH="$JAVA_HOME/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -106,23 +107,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source /etc/profile
 source ~/.profile
 # source ~/.vimrc
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 unsetopt AUTO_CD
 
 wd() {
-  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
-}
-wd() {
-  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
-}
-wd() {
-  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
-}
-wd() {
-  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
-}
-wd() {
-  . /home/langle/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+  . ~/.oh-my-zsh/own-plugin/bin/wd/wd.sh
 }
