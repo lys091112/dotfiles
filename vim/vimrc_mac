@@ -120,18 +120,17 @@ set nofoldenable "关闭自动折叠
 let mapleader = ","
 
 "own basiz set
-nnoremap <silent> <Leader>w :w!<cr> 
-nnoremap <silent> <Leader>q :wq<cr> 
-nnoremap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <silent> <leader>w :w!<cr> 
+nnoremap <silent> <leader>q :wq<cr> 
+nnoremap <silent> <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "inoremap $1 ()<esc>i
-inoremap $( ()<esc>i
-inoremap $[ []<esc>i
-inoremap ${ {}<esc>i
-"inoremap ${ {<esc>o}<esc>O<esc>4i<space><esc>i
-"inoremap ' ''<esc>i  
-inoremap $" ""<esc>i
-inoremap $< <><esc>i
+inoremap ( ()<esc>i
+inoremap [ []<esc>i
+inoremap { {}<esc>i
+inoremap " ""<esc>i
+inoremap < <><esc>i
+au FileType go inoremap { {}<esc>i<CR><esc>O
 
 vnoremap ( <esc>`>a)<esc>`<i(<esc> 
 vnoremap [ <esc>`>a]<esc>`<i[<esc> 
@@ -179,7 +178,7 @@ set gcr=a:block-blinkon0 "关闭光标闪烁
 
 "jk从insert切换到normal, 关闭<esc>键
 :inoremap jk <esc>
-:inoremap <esc> <nop>
+"":inoremap <esc> <nop>
 
 "注释
 :autocmd FileType java nnoremap <buffer> <leader>/ I//<esc>
@@ -196,10 +195,10 @@ xnoremap * : <C-u> call <SID> VSetSearch() <CR>/<C-R>=@/<CR><CR>
 xnoremap # : <C-u> call <SID> VSetSearch() <CR>?<C-R>=@/<CR><CR>
 
 function! s:VSetSearch()
-    let temp = @s
-    norm! gv"sy
-    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
-    let @s = temp
+let temp = @s
+norm! gv"sy
+let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+let @s = temp
 endfunction
 
 "用特殊的符号来代表tab制表符
@@ -251,17 +250,15 @@ let g:table_mode_corner="|"
 "imap <silent> <F9> <Plug>StopMarkdownPreview
 
 
-"nmap <silent> <Leader>mk <Plug>MarkdownPreview
-nnoremap <Leader>mk <Plug>MarkdownPreview
-inoremap <Leader>mk <Plug>MarkdownPreview
-nnoremap <silent> <Leader>dn <Plug>StopMarkdownPreview
-inoremap <silent> <Leader>dn <Plug>StopMarkdownPreview
+nnoremap <silent> <leader>mk :MarkdownPreview<cr>
+inoremap <silent> <leader>mk :MarkdownPreview<cr>
+nnoremap <silent> <leader>dn :StopMarkdownPreview<cr>
+inoremap <silent> <leader>dn :StopMarkdownPreview<cr>
 
 "使用goolge浏览器自带的markdown浏览控件
-"nnoremap <Leader>ch :update<Bar>silent !google-chrome %:p<CR>
+"nnoremap <leader>ch :update<Bar>silent !google-chrome %:p<CR>
 
 " path to the chrome or the command to open chrome()
-"let g:mkdp_path_to_chrome = "google-chrome"
 let g:mkdp_path_to_chrome="/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
 
 " set to 1, the vim will open the preview window once enter the markdowni file
@@ -286,18 +283,18 @@ let g:mkdp_command_for_global = 0
 "let mapleader = " "
 
 " vim-go custom mappings
-au FileType go nnoremap <Leader>s <Plug>(go-implements)
-au FileType go nnoremap <Leader>i <Plug>(go-info)
-au FileType go nnoremap <Leader>gd <Plug>(go-doc)
-au FileType go nnoremap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nnoremap <leader>s <Plug>(go-implements)
+au FileType go nnoremap <leader>i <Plug>(go-info)
+au FileType go nnoremap <leader>gd <Plug>(go-doc)
+au FileType go nnoremap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nnoremap <leader>r <Plug>(go-run)
 au FileType go nnoremap <leader>b <Plug>(go-build)
 au FileType go nnoremap <leader>t <Plug>(go-test)
 au FileType go nnoremap <leader>c <Plug>(go-coverage)
-"au FileType go nmap <Leader>ds <Plug>(go-def-split)
-"au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nnoremap <Leader>dt <Plug>(go-def-tab)
-au FileType go nnoremap <Leader>e <Plug>(go-rename)
+"au FileType go nmap <leader>ds <Plug>(go-def-split)
+"au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+au FileType go nnoremap <leader>dt <Plug>(go-def-tab)
+au FileType go nnoremap <leader>e <Plug>(go-rename)
 
 "vim-go setting
 let g:go_fmt_command = "goimports"
@@ -312,15 +309,15 @@ let g:multi_cursor_quit_key='<Esc>'
 
 "--------minibufexpl----------
 
-nnoremap <silent> <Leader>b1 :b1<cr>
-nnoremap <silent> <Leader>b2 :b2<cr>
-nnoremap <silent> <Leader>b3 :b3<cr>
-nnoremap <silent> <Leader>b4 :b4<cr>
-nnoremap <silent> <Leader>b5 :b5<cr>
-nnoremap <silent> <Leader>b6 :b6<cr>
-nnoremap <silent> <Leader>b7 :b7<cr>
-nnoremap <silent> <Leader>b8 :b8<cr>
-nnoremap <silent> <Leader>b8 :b9<cr>
+nnoremap <silent> <leader>b1 :b1<cr>
+nnoremap <silent> <leader>b2 :b2<cr>
+nnoremap <silent> <leader>b3 :b3<cr>
+nnoremap <silent> <leader>b4 :b4<cr>
+nnoremap <silent> <leader>b5 :b5<cr>
+nnoremap <silent> <leader>b6 :b6<cr>
+nnoremap <silent> <leader>b7 :b7<cr>
+nnoremap <silent> <leader>b8 :b8<cr>
+nnoremap <silent> <leader>b8 :b9<cr>
 "这个设置保证在打开0个以上的文件是最高限制都是有用的，
 "如果不加就会出现打开一个文件的时候Filexplorer再次变小，当打开多个文件的时候再次变大
 let g:miniBufExplorerMoreThanOne=0
