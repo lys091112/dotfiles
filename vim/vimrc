@@ -202,7 +202,6 @@ nmap <F8> :TagbarToggle<CR>
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "如果是c语言的程序的话，tagbar自动开启
 "
 "#--------------NERDTREE配置------------
-let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeDirArrows=1 "目录箭头 1 显示箭头  0传统+-|号
