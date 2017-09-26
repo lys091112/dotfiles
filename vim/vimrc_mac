@@ -70,12 +70,19 @@ filetype plugin indent on    " required为特定文件类型载入相关缩进�
 
 syntax on
 colorscheme molokai 
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 let g:molokai_original = 1
+
+
+"cterm 表示为原生vim设置样式，设置为NONE表示可以自定义设置。
+"ctermbg 设置终端vim的背景色
+"ctermfg 设置终端vim的前景色
+"guifg=#8080ff guibg=fg gui=reverse gui模式下
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+hi Visual ctermfg=lightblue ctermbg=fg cterm=reverse
 
 " Encoding
 set encoding=utf-8
@@ -117,6 +124,7 @@ set nofoldenable "关闭自动折叠
 
 
 " set mapleader
+"let mapleader = " "
 let mapleader = ","
 
 "own basiz set
@@ -277,11 +285,7 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 
 
-
 " golang 配置
-" set mapleader
-"let mapleader = " "
-
 " vim-go custom mappings
 au FileType go nnoremap <leader>s <Plug>(go-implements)
 au FileType go nnoremap <leader>i <Plug>(go-info)
@@ -292,7 +296,7 @@ au FileType go nnoremap <leader>b <Plug>(go-build)
 au FileType go nnoremap <leader>t <Plug>(go-test)
 au FileType go nnoremap <leader>c <Plug>(go-coverage)
 "au FileType go nmap <leader>ds <Plug>(go-def-split)
-"au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+"au FileType go nmap <eader>dv <Plug>(go-def-vertical)
 au FileType go nnoremap <leader>dt <Plug>(go-def-tab)
 au FileType go nnoremap <leader>e <Plug>(go-rename)
 
