@@ -184,9 +184,11 @@ set incsearch "逐字高亮
 set smartcase "自动识别大小写，
 set gcr=a:block-blinkon0 "关闭光标闪烁
 
-"jk从insert切换到normal, 关闭<esc>键
-:inoremap jk <esc>
-"":inoremap <esc> <nop>
+"df从insert切换到normal
+:inoremap df <esc>
+
+" 关闭<esc>键
+":inoremap <esc> <nop>
 
 "注释
 :autocmd FileType java nnoremap <buffer> <leader>/ I//<esc>
@@ -208,6 +210,16 @@ norm! gv"sy
 let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
 let @s = temp
 endfunction
+
+"窗口移动
+nmap J <C-w>j  
+nmap H <C-w>h  
+nmap K <C-w>k  
+nmap L <C-w>l  
+nmap W <C-w>w
+
+"移动光标到括号后
+inoremap ,, <Esc>la
 
 "用特殊的符号来代表tab制表符
 "set list
@@ -251,12 +263,6 @@ let g:vim_markdown_folding_disabled = 1 "设置不做代码折叠
 let g:vim_markdown_frontmatter=1 "设置支持yaml语法
 let g:vim_markdown_math=1
 let g:table_mode_corner="|"
-
-"nmap <silent> <F10> <Plug>MarkdownPreview
-"imap <silent> <F10> <Plug>MarkdownPreview
-"nmap <silent> <F9> <Plug>StopMarkdownPreview
-"imap <silent> <F9> <Plug>StopMarkdownPreview
-
 
 nnoremap <silent> <leader>mk :MarkdownPreview<cr>
 inoremap <silent> <leader>mk :MarkdownPreview<cr>
