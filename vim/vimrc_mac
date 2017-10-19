@@ -212,7 +212,6 @@ let @s = temp
 endfunction
 
 "窗口移动
-nmap J <C-w>j  
 nmap H <C-w>h  
 nmap K <C-w>k  
 nmap L <C-w>l  
