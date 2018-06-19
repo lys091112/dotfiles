@@ -179,7 +179,7 @@ set gcr=a:block-blinkon0 "关闭光标闪烁
 
 "jk从insert切换到normal, 关闭<esc>键
 :inoremap jk <esc>
-:inoremap <esc> <nop>
+"esc":inoremap <esc> <nop>
 
 "注释
 :autocmd FileType java nnoremap <buffer> <leader>/ I//<esc>
