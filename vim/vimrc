@@ -124,6 +124,7 @@ nnoremap <silent> <Leader>w :w!<cr>
 nnoremap <silent> <Leader>q :wq<cr> 
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>:pwd<cr>
 
+
 "inoremap $1 ()<esc>i
 inoremap $( ()<esc>i
 inoremap $[ []<esc>i
@@ -139,6 +140,12 @@ vnoremap { <esc>`>a}<esc>`<i{<esc>
 vnoremap $" <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
 vnoremap < <esc>`>a><esc>`<i<<esc> 
+
+"窗口移动
+nmap H <C-w>h  
+nmap K <C-w>k  
+nmap L <C-w>l  
+nmap W <C-w>w
 
 command! Json :execute '%!python -m json.tool'
 "windowns
@@ -251,10 +258,10 @@ let g:table_mode_corner="|"
 
 
 "nmap <silent> <Leader>mk <Plug>MarkdownPreview
-nnoremap <Leader>mk <Plug>MarkdownPreview
-inoremap <Leader>mk <Plug>MarkdownPreview
-nnoremap <silent> <Leader>dn <Plug>StopMarkdownPreview
-inoremap <silent> <Leader>dn <Plug>StopMarkdownPreview
+nnoremap <silent> <leader>mk :MarkdownPreview
+inoremap <silent> <leader>mk :MarkdownPreview
+nnoremap <silent> <leader>dn :StopMarkdownPreview
+inoremap <silent> <leader>dn :StopMarkdownPreview
 
 "使用goolge浏览器自带的markdown浏览控件
 "nnoremap <Leader>ch :update<Bar>silent !google-chrome %:p<CR>

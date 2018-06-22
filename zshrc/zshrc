@@ -107,12 +107,12 @@ export PATH="$JAVA_HOME/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#source /etc/profile
+# source /etc/profile
 source ~/.profile
 # source ~/.vimrc
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 unsetopt AUTO_CD
 
 wd() {
-  . ~/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+  . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
 }
