@@ -72,6 +72,19 @@ alias hosts='vim /etc/hosts'
 alias mci='mvn clean install'
 alias mct='mvn clean test'
 
+# ubuntu 旋转显示器
+# 向左旋转90度
+alias tleft='xrandr -o left'
+# 向右旋转90度
+alias tright='xrandr -o right'
+# 上下翻转
+alias tleft='xrandr -o inverted'
+# 回到正常角度
+alias tleft='xrandr -o normal'
+
+# 启动python虚拟环境
+source /home/liuhongjun/xianyue/workspace/pythonenv/venv/bin/activate
+
 # Define Path
 #export PATH=$JAVA_HOME/bin:/usr/local/sbin:$PATH
 

@@ -18,5 +18,5 @@ service ssh start
 /etc/init.d/ssh start
 
 ```
-
+5. sudo apt install python3-pip
 
