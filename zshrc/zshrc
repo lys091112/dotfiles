@@ -83,7 +83,14 @@ alias tleft='xrandr -o inverted'
 alias tleft='xrandr -o normal'
 
 # 启动python虚拟环境
-source /home/liuhongjun/xianyue/workspace/pythonenv/venv/bin/activate
+alias starttensor='source /home/liuhongjun/xianyue/workspace/tensorflow/bin/activate'
+alias stoptensor='cd /home/liuhongjun/xianyue/workspace/tensorflow/bin && deactivate'
+
+function startproxy {
+   export http_proxy="http://127.0.0.1:8123"
+   export https_proxy="http://127.0.0.1:8123"
+}
+
 
 # Define Path
 #export PATH=$JAVA_HOME/bin:/usr/local/sbin:$PATH
