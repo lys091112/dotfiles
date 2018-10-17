@@ -82,6 +82,9 @@ alias tleft='xrandr -o inverted'
 # 回到正常角度
 alias tleft='xrandr -o normal'
 
+# 音频调制程序
+alias sound='pavucontrol'
+
 # 启动python虚拟环境
 alias starttensor='source /home/liuhongjun/xianyue/workspace/tensorflow/bin/activate'
 alias stoptensor='cd /home/liuhongjun/xianyue/workspace/tensorflow/bin && deactivate'
@@ -133,6 +136,9 @@ source ~/.profile
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 unsetopt AUTO_CD
 
+wd() {
+  . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+}
 wd() {
   . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
 }
