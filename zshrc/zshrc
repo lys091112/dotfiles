@@ -139,6 +139,3 @@ unsetopt AUTO_CD
 wd() {
   . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
 }
-wd() {
-  . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
-}
