@@ -52,11 +52,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bower common-aliases docker encode64 git-extras gradle jira mvn npm pip pod python redis-cli sbt wd)
- 
-#Define Java Home
-#JAVA_HOME="/home/langle/xianyue/software/jdk1.8.0_45"
-#export JAVA_HOME
+# plugins=(git bower common-aliases docker encode64 git-extras gradle mvn npm pip pod python redis-cli sbt wd zsh-autosuggestions zsh-syntax-highlighting )
+plugins=(git docker encode64 git-extras wd zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
       
 # Java Encoding
 alias javac='javac -J-Dfile.encoding=UTF-8 -encoding UTF-8 '
@@ -82,38 +79,45 @@ alias tleft='xrandr -o inverted'
 # 回到正常角度
 alias tleft='xrandr -o normal'
 
-# 音频调制程序
-alias sound='pavucontrol'
-
-# 启动python虚拟环境
-alias starttensor='source /home/liuhongjun/xianyue/workspace/tensorflow/bin/activate'
-alias stoptensor='cd /home/liuhongjun/xianyue/workspace/tensorflow/bin && deactivate'
-
 function startproxy {
    export http_proxy="http://127.0.0.1:8123"
    export https_proxy="http://127.0.0.1:8123"
 }
 
 
-# Define Path
-#export PATH=$JAVA_HOME/bin:/usr/local/sbin:$PATH
-
 source $ZSH/oh-my-zsh.sh
+## plugins bind
+# zsh-history-substring-search
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down
 
-# User configuration
-export PATH="$JAVA_HOME/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# 调整屏幕亮度
+alias blight='~/xianyue/workspace/own/dotfiles/shell/blight.sh'
+ 
+# golang
+# go安装路径
+export GOROOT=/usr/local/go
+# 默认安装包路径
+export GOPATH=$HOME/xianyue/workspace/go/gowork
+
+# 切换源
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+ 
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+ 
+export JAVA_HOME=/usr/local/java/jdk1.8.0_202
+ 
+export JRE_HOME=/usr/local/java/jdk1.8.0_202/jre
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+ 
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -121,21 +125,12 @@ export PATH="$JAVA_HOME/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # source /etc/profile
-source ~/.profile
+#source ~/.profile
 # source ~/.vimrc
-#source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 unsetopt AUTO_CD
 
 wd() {
-  . /home/liuhongjun/.oh-my-zsh/own-plugin/bin/wd/wd.sh
+    . /usr/share/wd/wd.sh
 }
+

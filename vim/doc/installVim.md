@@ -1,30 +1,5 @@
-# unbuntu 编译安装vim
+# 安装vim
 
-## 手动编译
-
-    1.删除掉旧的vim sudo apt-get remove vim vim-runtime gvim
-      可能还需要删除sudo apt-get remove vim-tiny vim-common vim-gui-common
-    2.手动安装一下库，解决依赖问题
-        eui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev mercurial
-    3. 解压vim源码包，进入目录进行编译
-       * cd ~/downloads/vim74/  
-       *  ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux/ --enable-perlinterp --enable-gui=gtk2 --enable-cscope --enable-luainterp --enable-multibyte --enable-xim --prefix=/usr
-       参数说明：
-       --with-features=huge：支持最大特性
-       --enable-rubyinterp：启用Vim对ruby编写的插件的支持
-       --enable-pythoninterp：启用Vim对python编写的插件的支持
-       --enable-luainterp：启用Vim对lua编写的插件的支持
-       --enable-perlinterp：启用Vim对perl编写的插件的支持
-       --enable-multibyte 和 --enable-xim：需要在Vim中输入中文，开启这两个特性
-       --enable-cscope：Vim对cscope支持
-       --enable-gui=gtk2：gtk2支持,也可以使用gnome，表示生成gvim
-       --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ 指定 python 路径，这是python2在ubuntu64位机子上的路径，32位应该为/usr/lib/python2.7/config-i386-linux-gnu/
-       --prefix=/usr：设定编译安装路径，注意自己是否有权限访问。
-       如果configure出错，先用make distclean清除之前configure产生的文件再configure
-    4. 指定VIMRUNTIMEDIR
-       * make VIMRUNTIMEDIR=/usr/share/vim/vim74
-    5.编译执行
-       * sudo make install
     
 ## 插件安装
 
