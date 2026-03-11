@@ -7,6 +7,11 @@ if [ $size -eq 1 ]; then
 	light=$1
 fi
 
+# 默认值不能小于0.3
+if [ `echo "$light<0.3" | bc` -eq 1 ]; then
+    light=0.3
+fi
+
 screen=$(xrandr --listactivemonitors | grep 0: | awk '{print $4}')
 
 if [ -z $screen ]; then

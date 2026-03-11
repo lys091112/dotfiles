@@ -1,0 +1,169 @@
+-- ~/.config/nvim/lua/plugins/gopls.lua
+return {}
+-- ====================================
+-- 1. gopls LSP 配置
+-- ====================================
+--   {
+--     "neovim/nvim-lspconfig",
+--     opts = {
+--       servers = {
+--         gopls = {
+--           -- gopls 设置
+--           settings = {
+--             -- 关键：确保定义跳转被启用
+--             capabilities = {
+--               definitionProvider = true,
+--             },
+--             gopls = {
+--               -- 代码分析
+--               analyses = {
+--                 unusedparams = true, -- 未使用参数
+--                 shadow = true, -- 变量遮蔽
+--                 nilness = true, -- nil 检查
+--                 unusedwrite = true, -- 未使用的写操作
+--                 useany = true, -- 使用 interface{}
+--               },
+--               -- 格式化
+--               gofumpt = true, -- 更严格的格式化
+--               codelenses = {
+--                 gc_details = true, -- GC 细节
+--                 test = true, -- 测试代码镜头
+--                 tidy = true, -- go mod tidy
+--                 vendor = true, -- vendor 管理
+--                 regenerate_cgo = true, -- 重新生成 CGO
+--               },
+--               -- 代码补全
+--               completeUnimported = true, -- 补全未导入的包
+--               usePlaceholders = true, -- 使用占位符
+--               semanticTokens = true, -- 语义高亮
+--               -- 静态检查
+--               staticcheck = true, -- 启用 staticcheck
+--               -- 提示
+--               hints = {
+--                 assignVariableTypes = true, -- 变量类型提示
+--                 compositeLiteralFields = true, -- 复合字面量字段
+--                 compositeLiteralTypes = true, -- 复合字面量类型
+--                 constantValues = true, -- 常量值
+--                 functionTypeParameters = true, -- 函数类型参数
+--                 parameterNames = true, -- 参数名
+--                 rangeVariableTypes = true, -- range 变量类型
+--               },
+--               -- 目录过滤（提高性能）
+--               directoryFilters = {
+--                 "-node_modules",
+--                 "-.git",
+--                 "-vendor",
+--                 "-testdata",
+--               },
+--               -- 实验功能
+--               experimentalPostfixCompletions = true, -- 后缀补全
+--               expandWorkspaceToModule = true, -- 扩展到模块
+--             },
+--           },
+--           -- 初始化选项
+--           init_options = {
+--             usePlaceholders = true,
+--             completeUnimported = true,
+--           },
+--           -- 单文件支持
+--           single_file_support = true,
+--           -- 性能优化
+--           flags = {
+--             debounce_text_changes = 200,
+--           },
+--         },
+--       },
+--       -- 自动格式化设置
+--       autoformat = true,
+--       format = {
+--         formatting_options = nil,
+--         timeout_ms = 5000,
+--       },
+--     },
+--   },
+--   -- ====================================
+--   -- 2. Go 开发增强插件
+--   -- ====================================
+--   {
+--     "ray-x/go.nvim",
+--     dependencies = {
+--       "neovim/nvim-lspconfig",
+--       "nvim-treesitter/nvim-treesitter",
+--       "mfussenegger/nvim-dap",
+--     },
+--     ft = { "go", "gomod", "gotmpl" },
+--     build = ':lua require("go.install").update_all_sync()',
+--     config = function()
+--       require("go").setup({
+--         -- 禁用内置 LSP 配置（使用上面的配置）
+--         lsp_cfg = false,
+--         lsp_on_attach = false,
+--         lsp_keymaps = false,
+--
+--         -- 格式化设置
+--         goimport = "gopls", -- 使用 gopls 管理导入
+--         gofmt = "gofumpt", -- 使用 gofumpt 格式化
+--
+--         -- 测试运行器
+--         test_runner = "go", -- go test, richgo, dlv
+--         run_in_floaterm = true, -- 在浮动终端运行
+--
+--         -- 调试支持
+--         dap_debug = true,
+--         dap_debug_keymap = false, -- 使用 LazyVim 的键位
+--         dap_debug_gui = false,
+--
+--         -- 其他功能
+--         luasnip = true, -- 代码片段支持
+--         trouble = true, -- 问题列表集成
+--         textobjects = true, -- 文本对象
+--       })
+--
+--       -- 设置快捷键
+--       local map = vim.keymap.set
+--
+--       -- 测试相关
+--       map("n", "<leader>gt", "<cmd>GoTest<CR>", { desc = "Run tests" })
+--       map("n", "<leader>gT", "<cmd>GoTestFunc<CR>", { desc = "Test function" })
+--       map("n", "<leader>gp", "<cmd>GoTestPkg<CR>", { desc = "Test package" })
+--
+--       -- 构建运行
+--       map("n", "<leader>gb", "<cmd>GoBuild<CR>", { desc = "Build" })
+--       map("n", "<leader>gr", "<cmd>GoRun<CR>", { desc = "Run" })
+--       map("n", "<leader>gR", "<cmd>GoRunLast<CR>", { desc = "Run last" })
+--
+--       -- 代码生成
+--       map("n", "<leader>ge", "<cmd>GoIfErr<CR>", { desc = "Generate if err" })
+--       map("n", "<leader>gs", "<cmd>GoFillStruct<CR>", { desc = "Fill struct" })
+--       map("n", "<leader>gI", "<cmd>GoImpl<CR>", { desc = "Implement interface" })
+--       map("n", "<leader>gc", "<cmd>GoCmt<CR>", { desc = "Generate comment" })
+--
+--       -- 模块管理
+--       map("n", "<leader>gm", "<cmd>GoModInit<CR>", { desc = "Init mod" })
+--       map("n", "<leader>gM", "<cmd>GoModTidy<CR>", { desc = "Mod tidy" })
+--
+--       map("n", "<leader>ga", "<cmd>GoCodeAction<CR>", { desc = "Go Code Action" })
+--       map("n", "<leader>gA", "<cmd>GoAlt<CR>", { desc = "Go Alternate File" })
+--       map("n", "<leader>gd", "<cmd>GoDoc<CR>", { desc = "Show Documentation" })
+--       map("n", "<leader>gf", "<cmd>GoFmt<CR>", { desc = "Format" })
+--       map("n", "<leader>gF", "<cmd>GoFix<CR>", { desc = "Fix imports" })
+--       map("n", "<leader>gi", "<cmd>GoImport<CR>", { desc = "Add import" })
+--       map("n", "<leader>gl", "<cmd>GoLint<CR>", { desc = "Lint" })
+--       map("n", "<leader>gm", "<cmd>GoMod<CR>", { desc = "Go module" })
+--       map("n", "<leader>gp", "<cmd>GoPlay<CR>", { desc = "Run in playground" })
+--       map("n", "<leader>gR", "<cmd>GoRename<CR>", { desc = "Rename" })
+--       map("n", "<leader>gS", "<cmd>GoFillSwitch<CR>", { desc = "Fill switch" })
+--       map("n", "<leader>gu", "<cmd>GoAddTag<CR>", { desc = "Add tag" })
+--       map("n", "<leader>gU", "<cmd>GoRemoveTag<CR>", { desc = "Remove tag" })
+--       map("n", "<leader>gv", "<cmd>GoVet<CR>", { desc = "Vet" })
+--       map("n", "<leader>gw", "<cmd>GoGenerate<CR>", { desc = "Generate" })
+--
+--       -- 调试键位
+--       map("n", "<leader>dB", "<cmd>GoDebugBreakpoint<CR>", { desc = "Toggle breakpoint" })
+--       map("n", "<leader>dR", "<cmd>GoDebugRestart<CR>", { desc = "Restart debug" })
+--       map("n", "<leader>dn", "<cmd>GoDebugNext<CR>", { desc = "Debug next" })
+--       map("n", "<leader>ds", "<cmd>GoDebugStart<CR>", { desc = "Start debug" })
+--       map("n", "<leader>dt", "<cmd>GoDebugStop<CR>", { desc = "Stop debug" })
+--     end,
+--   },
+-- }

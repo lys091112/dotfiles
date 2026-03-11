@@ -80,8 +80,9 @@ alias tleft='xrandr -o inverted'
 alias tleft='xrandr -o normal'
 
 function startproxy {
-   export http_proxy="http://127.0.0.1:8123"
-   export https_proxy="http://127.0.0.1:8123"
+   # export http_proxy="http://127.0.0.1:7890"
+   export http_proxy="http://127.0.0.1:7897"
+   export https_proxy="http://127.0.0.1:7897"
 }
 
 
@@ -99,7 +100,7 @@ alias blight='~/xianyue/workspace/own/dotfiles/shell/blight.sh'
 # go安装路径
 export GOROOT=/usr/local/go
 # 默认安装包路径
-export GOPATH=$HOME/xianyue/workspace/go/gowork
+export GOPATH=$HOME/xianyue/workspace/language/go/gowork
 
 # 切换源
 export GO111MODULE=on
@@ -108,12 +109,30 @@ export GOPROXY=https://goproxy.cn
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
  
-export JAVA_HOME=/usr/local/java/jdk1.8.0_202
- 
-export JRE_HOME=/usr/local/java/jdk1.8.0_202/jre
+export JAVA_HOME=/usr/local/java/jdk-21
+
+# export JRE_HOME=/usr/local/java/jdk-21
+# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
  
-export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export PATH=$PATH:$JAVA_HOME/bin
+
+function java8 {
+    export JAVA_HOME=/usr/local/java/jdk1.8.0_202
+    export JRE_HOME=/usr/local/java/jdk1.8.0_202
+}
+
+## antlr4
+#
+export CLASSPATH=".:/usr/local/lib/antlr-4.13.1-complete.jar:$CLASSPATH"
+alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
+# TUI 
+# 预防误删除
+# alias rm="trash"
+# alias rr="trash-restore"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -126,7 +145,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # source /etc/profile
-#source ~/.profile
+source ~/.profile
 # source ~/.vimrc
 unsetopt AUTO_CD
 
@@ -134,3 +153,12 @@ wd() {
     . /usr/share/wd/wd.sh
 }
 
+
+# bun completions
+[ -s "/home/langle/.bun/_bun" ] && source "/home/langle/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="~/.bun/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
