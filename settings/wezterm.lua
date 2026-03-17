@@ -60,19 +60,6 @@ config.colors = {
 	selection_bg = "#313244",
 	selection_fg = "#c0caf5",
 }
--- 非活动窗口样式（让分屏效果更明显）
-config.inactive_pane_hsb = {
-	saturation = 0.5, -- 降低饱和度
-	brightness = 0.9, -- 降低亮度
-}
-
--- 窗口内边距（让分屏线更清晰）
-config.window_padding = {
-	left = 2,
-	right = 2,
-	top = 2,
-	bottom = 2,
-}
 
 -- 调整字体样式时，不自动调整窗口大小
 config.adjust_window_size_when_changing_font_size = false

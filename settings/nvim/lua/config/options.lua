@@ -17,5 +17,8 @@ vim.opt.clipboard = "unnamedplus" -- 使用系统剪贴板
 vim.opt.conceallevel = 0
 vim.opt.concealcursor = ""
 
+-- set scrolloff=10 来临时调整
+vim.opt.scrolloff = 15 -- 光标距离底部的行数
+
 -- vim.opt.spell = false
 -- set nospell 手动关闭拼写检查
