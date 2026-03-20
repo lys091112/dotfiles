@@ -78,7 +78,37 @@ end
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 config.disable_default_key_bindings = false
 
+config.key_tables = {
+	-- 定义一个名为 "activate_pane" 的键表，用于窗格切换
+	activate_pane = {
+		{ key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
+		{ key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
+		{ key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
+		{ key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
+		{ key = "LeftArrow", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "DownArrow", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "UpArrow", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
+		-- 按 Escape 退出这个模态
+		{ key = "Escape", action = "PopKeyTable" },
+		-- 也可以按 q 退出
+		{ key = "q", action = "PopKeyTable" },
+	},
+}
+
 config.keys = {
+
+	{
+		key = "a",
+		mods = "LEADER",
+		-- 执行 ActivateKeyTable 动作，进入我们上面定义的 'activate_pane' 键表
+		-- one_shot = false 表示进入后不会因为按一个键就退出，会一直停留在这个模态里
+		action = wezterm.action.ActivateKeyTable({
+			name = "activate_pane",
+			one_shot = false,
+			timeout_milliseconds = 10000, -- 也可以单独为这个键表设置超时
+		}),
+	},
 	-- 窗格分割
 	{ key = "|", mods = "LEADER|SHIFT", action = wezterm.action.SplitHorizontal },
 	-- { key = 'F1', action = wezterm.action.SplitHorizontal },
@@ -134,6 +164,9 @@ config.keys = {
 	{ key = "w", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 	-- Leader + t:切换标签栏显示 / 隐藏
 	{ key = "t", mods = "LEADER", action = wezterm.action.EmitEvent("toggle-tab-bar") },
+
+	-- 重命令tab页
+	{ key = "r", mods = "LEADER", action = wezterm.action.EmitEvent("rename-tab") },
 }
 
 wezterm.on("toggle-tab-bar", function(window, pane)
