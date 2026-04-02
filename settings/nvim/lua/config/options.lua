@@ -22,3 +22,7 @@ vim.opt.scrolloff = 15 -- 光标距离底部的行数
 
 -- vim.opt.spell = false
 -- set nospell 手动关闭拼写检查
+--
+-- -- 在 options.lua 中 开启文件备份
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.stdpath("data") .. "/backup"
