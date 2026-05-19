@@ -42,4 +42,13 @@ return {
       { "rcarriga/nvim-notify", optional = true },
     },
   },
+  {
+    import = "lazyvim.plugins.extras.lang.java",
+    opts = {
+      jdtls = {
+        -- 🔥 关键：禁用主类扫描，大幅提升 LSP 响应速度
+        dap_main = false,
+      },
+    },
+  },
 }

@@ -19,4 +19,21 @@ return {
       }
     end,
   },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dim = {
+        -- 启用动画效果（需要 Neovim 0.10 以上）
+        animate = { enabled = true },
+        scope = {
+          -- 生效的最小代码行数
+          min_size = 10,
+          -- 生效的最大代码行数
+          max_size = 20,
+          -- 是否包含同级代码块（如 if-else 分支）
+          siblings = true,
+        },
+      },
+    },
+  },
 }

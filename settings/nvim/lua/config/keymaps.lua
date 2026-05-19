@@ -4,7 +4,6 @@
 --
 -- 全局快捷键
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 
 -- 标签页管理
 -- 默认使用自带的gt gT命令来控制 tabnext tabnew tabprevious tabclose
@@ -27,3 +26,6 @@ vim.keymap.set("n", "<leader>t7", "<cmd>BufferLineGoToBuffer 7<cr>", { desc = "T
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
+
+-- 输出当前文件的绝对路径
+-- :echo expand("%:p")

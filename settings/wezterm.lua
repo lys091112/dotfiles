@@ -167,6 +167,8 @@ config.keys = {
 
 	-- 重命令tab页
 	{ key = "r", mods = "LEADER", action = wezterm.action.EmitEvent("rename-tab") },
+	-- 例如这里设置为 Ctrl + Shift + Z
+	{ key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 }
 
 wezterm.on("toggle-tab-bar", function(window, pane)

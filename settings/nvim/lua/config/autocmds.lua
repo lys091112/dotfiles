@@ -77,3 +77,25 @@ vim.api.nvim_create_autocmd("User", {
     end, 500) -- 延迟500ms
   end,
 })
+
+-- ~/.config/nvim/lua/config/autocmds.lua
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  pattern = "*",
+  callback = function()
+    -- 获取所有运行的 LSP 客户端
+    local clients = vim.lsp.get_clients()
+    if #clients > 0 then
+      -- 停止所有 LSP
+      for _, client in ipairs(clients) do
+        pcall(function()
+          client.stop()
+        end)
+      end
+      -- 短暂等待，让进程有时间退出
+      vim.wait(300, function()
+        return #vim.lsp.get_clients() == 0
+      end)
+    end
+  end,
+  desc = "退出前自动停止所有 LSP 进程",
+})
